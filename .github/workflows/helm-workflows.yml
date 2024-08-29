@@ -23,9 +23,8 @@ jobs:
       - name: Set up Helm
         uses: azure/setup-helm@v1
 
-      - name: Deploy
+      - name: Check Version
         shell: bash
         run: |
-          helm upgrade --install personalrepository-helm ./personalrepository-helm \
-          --namespace personalrepository-helm --create-namespace
+          helm version
 
