@@ -31,3 +31,13 @@ jobs:
           helm version
           echo "Helm version is $(helm version) has been set up"
 
+  deploy:
+    runs-on:
+      - ubuntu-latest
+
+    steps:
+      - name: Deploy Helm Chart
+        run: |
+          helm upgrade --install personalrepository-helm ./personalrepository-helm \
+          --namespace personalrepository-helm --create-namespace
+          echo "Deployment in progress..."
