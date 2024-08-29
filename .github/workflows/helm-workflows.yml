@@ -13,15 +13,17 @@ push:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
-      - name: Checkout
-        shell: bash
-        run: |
-          git clone https://github.com/rafaelgoncalvesmatos/personalrepository-helm.git
-          cd personalrepository-helm
-          git checkout develop
-          cd ..
+
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          ref: develop
+        
+      - name: Set up Helm
+        uses: azure/setup-helm@v1
+
       - name: Deploy
         shell: bash
         run: |
