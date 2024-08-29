@@ -14,17 +14,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-  steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-      with:
-        ref: develop
-      
-    - name: Set up Helm
-      uses: azure/setup-helm@v1
-
-    - name: Deploy
-      shell: bash
-      run: |
-        helm upgrade --install personalrepository-helm ./personalrepository-helm --namespace personalrepository-helm --create-namespace
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          ref: develop
+        
+      - name: Set up Helm
+        uses: azure/setup-helm@v1
+  
+      - name: Deploy
+        shell: bash
+        run: |
+          helm upgrade --install personalrepository-helm ./personalrepository-helm --namespace personalrepository-helm --create-namespace
 
