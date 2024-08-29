@@ -22,6 +22,8 @@ jobs:
 
       - name: Set up Helm
         uses: azure/setup-helm@v1
+        with: 
+          helm-version: '3.8.0'
 
       - name: Check Version
         shell: bash
