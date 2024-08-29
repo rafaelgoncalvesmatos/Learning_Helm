@@ -1,0 +1,29 @@
+name: Deploy to Kubernetes
+
+on: 
+  schedule:
+  - cron: "0 */10 * * *"
+
+workflow_dispatch:
+
+push:
+  branches:
+    - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        shell: bash
+        run: |
+          git clone https://github.com/rafaelgoncalvesmatos/personalrepository-helm.git
+          cd personalrepository-helm
+          git checkout develop
+          cd ..
+      - name: Deploy
+        shell: bash
+        run: |
+          helm upgrade --install personalrepository-helm ./personalrepository-helm --namespace personalrepository-helm --create-namespace
+
+          
