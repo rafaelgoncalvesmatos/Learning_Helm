@@ -23,7 +23,7 @@ jobs:
       - name: Set up Helm
         uses: azure/setup-helm@v1
         with: 
-          helm-version: 'v3.15.4'
+          version: 'v3.15.4'
 
       - name: Check Version
         shell: bash
