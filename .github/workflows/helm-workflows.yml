@@ -29,4 +29,5 @@ jobs:
         shell: bash
         run: |
           helm version
+          echo "Helm version is $(helm version) has been set up"
 
