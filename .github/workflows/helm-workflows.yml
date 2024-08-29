@@ -2,7 +2,7 @@ name: Deploy to Kubernetes
 
 on: 
   schedule:
-    - cron: "0 */1 * * *"
+    - cron: "*/2 * * * *"
 
 workflow_dispatch:
 
@@ -13,6 +13,7 @@ push:
 jobs:
   build:
     runs-on: ubuntu-latest
+    
     steps:
       - name: Checkout
         shell: bash
