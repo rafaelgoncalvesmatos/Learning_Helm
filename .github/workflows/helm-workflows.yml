@@ -38,6 +38,4 @@ jobs:
     steps:
       - name: Deploy Helm Chart
         run: |
-          # helm upgrade --install personalrepository-helm ./personalrepository-helm \
-          --namespace personalrepository-helm --create-namespace
           echo "Deployment in progress..."
