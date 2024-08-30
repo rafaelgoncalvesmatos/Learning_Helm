@@ -2,30 +2,40 @@ name: Deploy to Kubernetes
 
 on: 
   schedule:
-    - cron: "*/2 * * * *"
-
-workflow_dispatch:
-
-push:
-  branches:
-    - develop
-
+    - cron: "0 12 */2 * *"
+  
+  workflow_dispatch:
+  
+  push:
+    branches:
+      - develop
+  
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
           ref: develop
-        
+
       - name: Set up Helm
         uses: azure/setup-helm@v1
+        with: 
+          version: 'v3.15.4'
 
-      - name: Deploy
+      - name: Check Version
         shell: bash
         run: |
-          helm upgrade --install personalrepository-helm ./personalrepository-helm --namespace personalrepository-helm --create-namespace
+          helm version
+          echo "Helm version is $(helm version) has been set up"
 
+  deploy:
+    runs-on:
+      - ubuntu-latest
+
+    steps:
+      - name: Deploy Helm Chart
+        run: |
+          echo "Deployment in progress..."
